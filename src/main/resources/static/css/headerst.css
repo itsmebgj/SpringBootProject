@@ -1,0 +1,105 @@
+@charset "utf-8";
+
+.header {
+    text-align: center;
+    height: 100px;
+}
+
+.test1 {
+    display: inline-block;
+    width: 450px;
+}
+
+.test2 {
+    display: inline-block;
+    border-left: #000 solid 1px;
+    padding-left: 70px;
+}
+
+.test3 {
+    margin: 30px;
+}
+
+.sign {
+    background-color: gray;
+    width: 245px;
+    height: 245px;
+}
+
+.sign2 {
+    text-align: right;
+    color: #87CEEB; /* skyblue -> HEX 값 */
+    margin-right: 5px;
+}
+
+.sign3 {
+    text-align: center;
+}
+
+.IP {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.login {
+    text-align: right;
+    margin-right: 38px;
+    margin-top: 10px;
+}
+
+.playlist {
+    background-color: gray;
+    width: 245px;
+    height: 245px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.box1 {
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    width: 200px;
+    height: 210px;
+    position: absolute;
+    top : 50%;
+    left : 50%;
+    transform: translate(-50%, -50%);
+}
+
+.box2 {
+    background-color: #00FFFF; /* aqua -> HEX 값 */
+    width: 190px;
+    height: 170px;
+    margin: 0 auto;
+}
+
+.plbtn1 {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.myplaylist {
+    background-color: gray;
+    width: 245px;
+    height: 350px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.myplli1 {
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    top : 53%;
+    left : 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mypl1 {
+    margin-top: 15px;
+    text-align: left;
+    margin-left: 20px;
+    font-weight: bold; /* font-style(기울임 조정) -> 굵기는 font-weight */
+}
