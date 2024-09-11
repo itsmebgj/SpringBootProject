@@ -2,21 +2,73 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>홈 페이지</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+    <title>노래 추천</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/headerst.css}">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Spring Boot Application!</h1>
+    <header class="header">
+        <h1>Java Spring</h1>
+        <br>
+        <hr>
     </header>
     <main>
-        <p>This is a simple Thymeleaf template example.</p>
+    <section class="test3">
+        <section class="test1">
+            <div>
+                <h2>아침 식사</h2>
+                <p>아침에 먹기 좋은 요리 아이디어입니다.</p>
+            </div>
+            <div>
+                <h2>점심 식사</h2>
+                <p>점심 식사를 위한 레시피 추천입니다.</p>        
+            </div>
+            <div>
+                <h2>저녁 식사</h2>
+                <p>저녁 식사 아이디어와 레시피를 확인하세요.</p>
+            </div>
+        </section>
+        <section class="test2">
+        <div>
+            <div class="sign">
+                <div class="IP">
+                    <br> &nbsp;
+                        <label class>ID <input type="text" id="user_id" size="15" ></label> <br><br>
+                        <label class>PW <input type="password" id="user_pw" size="15" ></label>
+                </div>
+                <div class="login">
+                    <input type="submit" value="로그인">
+                    <input type="button" value="회원가입"> 
+                </div>
+                    <h1 class="sign3">계정이 기억이 안나시나요?</h1>
+                    <p class="sign2">아이디 찾기</p>
+                    <p class="sign2">비밀번호 찾기</p>
+            </div>
+
+            <div class="playlist">
+                <div class="box1">
+                    <div class = "box2">
+                        <img src="앨범 .jpg" alt="앨범사진" width="190px" height="170px">
+                    </div>
+                    <div class="plbtn1">
+                        <input type="button" value="이전"> 
+                        <input type="button" value="다음"> 
+                    </div>
+                </div>
+            </div>
+
+            <div class = "myplaylist">
+                <div class = "mypl1">
+                    나의 PlayList 
+                </div>
+                <div class="myplli1">
+                </div>
+            </div>
+
+        </div>
+        </section>
+    </section>
     </main>
-    <footer>
-        <p>&copy; 2024 My Spring Boot Application</p>
-    </footer>
 </body>
 </html>
-
 <!--view template으로 컨트롤러가 전달하는 데이터를 이용하여 동적으로 화면구성-->
 <!--Thymeleaf는 HTML, JS, CSS 등을 처리할 수 있는 웹 및 독립형 환경에서 사용이 가능한 java 템플릿 엔진이다.-->
