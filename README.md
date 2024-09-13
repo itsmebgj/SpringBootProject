@@ -36,12 +36,13 @@
         <li>Framework: Java Spring Boot</li> 
         <li>API: Spotify Open API</li>
       </ul> 
-  <ul> 
-    </li>
+    </ul> 
+  <ul>
     <li>2차 회의(24/09/13)
       <br>- 아이디,비밀번호찾기 및 회원가입 Modal UI 추가(완)
-      <br>- Mysql 설치 및 연동 <br>
+      <br>- Mysql 설치 및 연동(완) <br>
       </li>
+    </ul>
     <li>3차 회의     
         <br>-  
         <br>- 
