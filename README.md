@@ -36,6 +36,7 @@
         <li>Framework: Java Spring Boot</li> 
         <li>API: Spotify Open API</li>
       </ul> 
+  <ul> 
     </li>
     <li>2차 회의
       </li>
@@ -49,4 +50,13 @@
     <li>4차 회의
     </li>
     <li>5차 회의 
-    </li>   
+    </li> 
+  </ul>
+</details>
+    
+#### UI
+<details>
+  <summary>초기 UI 비교</summary>
+  <p><img src="https://github.com/user-attachments/assets/af306cbd-0eeb-40b9-97e5-e4d45a2a7530" alt="figma UI 프로토타입" width="400"></p>- Figma UI
+  <br> <p><img src="https://github.com/user-attachments/assets/da025d64-e69c-4ad6-8515-e838af08a23b" alt="UI 프로토타입" width="400"></p>- 실제 UI
+</details>
