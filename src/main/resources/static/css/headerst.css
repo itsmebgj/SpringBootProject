@@ -94,12 +94,6 @@ body {
     border-radius: 10px; /* 모서리 둥글게 */
 }
 
-.sign2 {
-    text-align: right;
-    color: #87CEEB; 
-    margin-right: 5px;
-}
-
 .sign3 {
     text-align: center;
 }
@@ -110,6 +104,12 @@ body {
 }
 
 .login {
+    text-align: right;
+    margin-right: 38px;
+    margin-top: 10px;
+}
+
+.find {
     text-align: right;
     margin-right: 38px;
     margin-top: 10px;
@@ -228,3 +228,4 @@ th, td {
 tbody tr:hover {
     background-color: #f9f9f9;
 }
+
