@@ -6,12 +6,12 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/headerst.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/modal.css}"> <!-- 모달 CSS 연결 -->
 </head>
+<body>
     <header class="header">
         <h1>MOFY</h1>
         <br>
         <hr>
     </header>
-<body>
     <main>
     <section class="test3">
         <div class="title">Music Only For You</div>
@@ -52,50 +52,58 @@
 
     </section>
 
-    <section class="test2">
-        <div>
-            <div class="sign">
-                <div class="IP">
-                    <br> &nbsp;
-                        <label class>ID <input type="text" id="user_id" size="25" ></label> <br><br>
-                        <label class>PW <input type="password" id="user_pw" size="25" ></label>
-                </div>
+        <section class="test2">
+            <div>
+                <div class="sign">
+                    <form th:action="@{/login}" method="post">
+                        <div class="IP">
+                            <br> &nbsp;
+                            <label>ID <input type="text" id="id" name="id" size="25"></label> <br><br>
+                            <label>PW <input type="password" id="password" name="password" size="25"></label>
+                        </div>
 
-                <div class="login">
-                    <input type="submit" value="로그인">
-                    <input type="button" id="signup-btn" value="회원가입"> <!-- 회원가입 버튼 -->
-                </div>
-                    <h1 class="sign3">계정이 기억이 안나시나요?</h1>
-                <div class="find">
-                    <input type="button" id="find-id-btn" value="아이디 찾기"> <!-- 아이디 찾기 버튼 -->
-                    <br>
-                    <input type="button" id="find-pw-btn" value="비밀번호 찾기"> <!-- 비밀번호 찾기 버튼 -->
-                </div>
-            </div>
-
-            <div class="playlist">
-                <div class="box1">
-                    <div class = "box2">
-                        <img src="앨범 .jpg" alt="앨범사진" width="250px" height="200px">
-                    </div>
+                        <div class="login">
+                            <input type="submit" value="로그인">
+                            <input type="button" id="signup-btn" value="회원가입"> <!-- 회원가입 버튼 -->
+                        </div>
+                        <h1 class="sign3">계정이 기억이 안나시나요?</h1>
+                        <div class="find">
+                            <input type="button" id="find-id-btn" value="아이디 찾기"> <!-- 아이디 찾기 버튼 -->
+                            <br>
+                            <input type="button" id="find-pw-btn" value="비밀번호 찾기"> <!-- 비밀번호 찾기 버튼 -->
+                        </div>
+                    </form>
                     
-                    <div class="plbtn1">
-                        <input type="button" value="이전"> 
-                        <input type="button" value="다음"> 
+                    <!-- 로그인 메시지 표시 -->
+                    <div th:if="${message != null}">
+                        <p style="color:red;" th:text="${message}"></p>
                     </div>
                 </div>
             </div>
 
-            <div class = "myplaylist">
-                <div class = "mypl1">
-                    나의 PlayList 
+                <div class="playlist">
+                    <div class="box1">
+                        <div class="box2">
+                            <img src="앨범.jpg" alt="앨범사진" width="250px" height="200px">
+                        </div>
+                        
+                        <div class="plbtn1">
+                            <input type="button" value="이전">
+                            <input type="button" value="다음">
+                        </div>
+                    </div>
                 </div>
-                <div class="myplli1">
+
+                <div class = "myplaylist">
+                    <div class = "mypl1">
+                        나의 PlayList 
+                    </div>
+                    <div class="myplli1">
+                    </div>
                 </div>
             </div>
+        </section>
 
-        </div>
-    </section>
     <!-- 모달 창 (회원가입 폼) -->
     <div id="signup-modal" class="modal">
         <div class="modal-content">
@@ -202,6 +210,3 @@
     </script>
 </body>
 </html>
-
-<!--view template으로 컨트롤러가 전달하는 데이터를 이용하여 동적으로 화면구성-->
-<!--Thymeleaf는 HTML, JS, CSS 등을 처리할 수 있는 웹 및 독립형 환경에서 사용이 가능한 java 템플릿 엔진이다.-->
