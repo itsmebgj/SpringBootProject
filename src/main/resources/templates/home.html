@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Music Only For You</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/headerst.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/modal.css}"> <!-- 모달 CSS 연결 -->
 </head>
 <body>
     <header class="header">
@@ -12,43 +13,44 @@
         <hr>
     </header>
     <main>
-        <section class="test3">
-            <div class="title">Music Only For You</div>
-            <br>
-            <div class="container">
-                <div class="arrow left">&#9664;</div>
-                <div class="boxes">
-                    <div class="box">1</div>
-                    <div class="box">2</div>
-                    <div class="box">3</div>
-                    <div class="box">4</div>
-                    <div class="box">5</div>
-                    <div class="box">6</div>
-                </div>
-                <div class="arrow right">&#9654;</div>
+    <section class="test3">
+        <div class="title">Music Only For You</div>
+        <br>
+        <div class="container">
+            <div class="arrow left">&#9664;</div>
+            <div class="boxes">
+                <div class="box">1</div>
+                <div class="box">2</div>
+                <div class="box">3</div>
+                <div class="box">4</div>
+                <div class="box">5</div>
+                <div class="box">6</div>
             </div>
-            
-            <div class="container1">
-                <h1>음악 순위</h1>
-                <div class="menu">
-                    <button>실시간 TOP 100</button>
-                    <button>장르별</button>
-                    <button>최신음악</button>
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>순위</th>
-                            <th>곡 정보</th>
-                            <th>담기</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- 데이터가 들어갈 부분 -->
-                    </tbody>
-                </table>
+            <div class="arrow right">&#9654;</div>
+        </div>
+    
+        <div class="container1">
+            <h1>음악 순위</h1>
+            <div class="menu">
+                <button>실시간 TOP 100</button>
+                <button>장르별</button>
+                <button>최신음악</button>
             </div>
-        </section>
+            <table>
+                <thead>
+                    <tr>
+                        <th>순위</th>
+                        <th>곡 정보</th>
+                        <th>담기</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 데이터가 들어갈 부분 -->
+                </tbody>
+            </table>
+        </div>
+
+    </section>
 
         <section class="test2">
             <div>
@@ -62,11 +64,14 @@
 
                         <div class="login">
                             <input type="submit" value="로그인">
-                            <input type="button" value="회원가입">
+                            <input type="button" id="signup-btn" value="회원가입"> <!-- 회원가입 버튼 -->
                         </div>
                         <h1 class="sign3">계정이 기억이 안나시나요?</h1>
-                        <p class="sign2">아이디 찾기</p>
-                        <p class="sign2">비밀번호 찾기</p>
+                        <div class="find">
+                            <input type="button" id="find-id-btn" value="아이디 찾기"> <!-- 아이디 찾기 버튼 -->
+                            <br>
+                            <input type="button" id="find-pw-btn" value="비밀번호 찾기"> <!-- 비밀번호 찾기 버튼 -->
+                        </div>
                     </form>
                     
                     <!-- 로그인 메시지 표시 -->
@@ -74,6 +79,7 @@
                         <p style="color:red;" th:text="${message}"></p>
                     </div>
                 </div>
+            </div>
 
                 <div class="playlist">
                     <div class="box1">
@@ -88,15 +94,119 @@
                     </div>
                 </div>
 
-                <div class="myplaylist">
-                    <div class="mypl1">
-                        나의 PlayList
+                <div class = "myplaylist">
+                    <div class = "mypl1">
+                        나의 PlayList 
                     </div>
                     <div class="myplli1">
                     </div>
                 </div>
             </div>
         </section>
+
+    <!-- 모달 창 (회원가입 폼) -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>회원가입</h2>
+            <form>
+                <label for="new_user_name">이름:</label><br>
+                <input type="text" id="new_user_name" name="new_user_name"><br><br>
+                <label for="new_user_dob">생년월일:</label><br>
+                <input type="date" id="new_user_dob" name="new_user_dob"><br><br>
+                <label for="new_user_id">아이디:</label><br>
+                <input type="text" id="new_user_id" name="new_user_id"><br><br>
+                <label for="new_user_pw">비밀번호:</label><br>
+                <input type="password" id="new_user_pw" name="new_user_pw"><br><br>
+                <input type="submit" value="회원가입">
+            </form>
+        </div>
+    </div>
+
+    <!-- 모달 창 (아이디 찾기 폼) -->
+    <div id="find-id-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="find-id-close">&times;</span>
+            <h2>아이디 찾기</h2>
+            <form>
+                <label for="find_user_name">이름:</label><br>
+                <input type="text" id="find_user_name" name="find_user_name"><br><br>
+                <label for="find_user_dob">생년월일:</label><br>
+                <input type="date" id="find_user_dob" name="find_user_dob"><br><br>
+                <input type="submit" value="아이디 찾기">
+            </form>
+        </div>
+    </div>
+    
+    <!-- 모달 창 (비밀번호 찾기 폼) -->
+    <div id="find-pw-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="find-pw-close">&times;</span>
+            <h2>비밀번호 찾기</h2>
+            <form>
+                <label for="new_user_id">아이디:</label><br>
+                <input type="text" id="new_user_id" name="new_user_id"><br><br>
+                <label for="find_user_name">이름:</label><br>
+                <input type="text" id="find_user_name" name="find_user_name"><br><br>
+                <label for="find_user_dob">생년월일:</label><br>
+                <input type="date" id="find_user_dob" name="find_user_dob"><br><br>
+                <input type="submit" value="비밀번호 찾기">
+            </form>
+        </div>
+    </div>
+
     </main>
+    <script>
+        // 회원가입 모달을 제어하는 자바스크립트
+        var modal = document.getElementById("signup-modal");
+        var btn = document.getElementById("signup-btn");
+        var span = document.getElementsByClassName("close")[0];
+
+        // 버튼 클릭 시 모달 창을 표시
+        btn.onclick = function() {
+            modal.style.display = "flex";
+        }
+
+        // X 버튼 클릭 시 모달 창 닫기
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // 모달 외부 클릭 시 모달 창 닫기
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // 아이디 찾기 모달을 제어하는 자바스크립트
+        var findIdModal = document.getElementById("find-id-modal");
+        var findIdBtn = document.getElementById("find-id-btn");
+        var findIdClose = document.getElementById("find-id-close");
+
+        findIdBtn.onclick = function() {
+            findIdModal.style.display = "flex";
+        }
+
+        findIdClose.onclick = function() {
+            findIdModal.style.display = "none";
+        }
+
+
+
+         // 비밀번호 찾기 모달을 제어하는 자바스크립트
+        var findPwModal = document.getElementById("find-pw-modal");
+        var findPwBtn = document.getElementById("find-pw-btn");
+        var findPwClose = document.getElementById("find-pw-close");
+
+        findPwBtn.onclick = function() {
+            findPwModal.style.display = "flex";
+        }
+
+        findPwClose.onclick = function() {
+            findPwModal.style.display = "none";
+        }
+
+    </script>
 </body>
 </html>

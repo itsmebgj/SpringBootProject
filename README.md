@@ -4,8 +4,8 @@
 <details> <summary>각 회의 차수별 결과물</summary> 
   <ul> 
     <li>1차 회의 (24/09/04) 
-      <br>- 작업환경설정, 깃허브 공용 리파지토리 생성후 연동(완) 
-      <br>- 주제 브레인스토밍 및 확정(완) <br> 
+      <br>- 작업환경설정, 깃허브 공용 리파지토리 생성후 연동
+      <br>- 주제 브레인스토밍 및 확정 <br> 
       <br><strong>브레인스토밍</strong> 
       <ul> 
         <li>1. 온라인 쇼핑몰</li> 
@@ -36,22 +36,28 @@
         <li>Framework: Java Spring Boot</li> 
         <li>API: Spotify Open API</li>
       </ul> 
-  <ul> 
-    </li>
-    <li>2차 회의
+    </ul> 
+  <ul>
+    <li>2차 회의(24/09/13)
+      <br>- 아이디,비밀번호찾기 및 회원가입 Modal UI 추가
+      <br>- Mysql 설치 및 연동 <br>
       </li>
-    <li>3차 회의     
-        <br>-  
-        <br>- 
-        <br>- 
-        <br>- 
-        <br>- 
+    </ul>
+  <ul>
+    <li>3차 회의(24/09/20)
+        <br>- 각 UI 별 기능추가
+        <br>- 추천 알고리즘 브레인스토밍
       </li> 
+    </ul>
+  <ul>
     <li>4차 회의
     </li>
+    </ul>
+  <ul>
     <li>5차 회의 
     </li> 
-  </ul>
+    </ul>
+  
 </details>
     
 #### UI
