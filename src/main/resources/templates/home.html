@@ -13,48 +13,47 @@
         <hr>
     </header>
     <main>
-    <section class="test3">
-        <div class="title">Music Only For You</div>
-        <br>
-        <div class="container">
-            <div class="arrow left">&#9664;</div>
-            <div class="boxes">
-                <div class="box">1</div>
-                <div class="box">2</div>
-                <div class="box">3</div>
-                <div class="box">4</div>
-                <div class="box">5</div>
-                <div class="box">6</div>
+        <section class="test3">
+            <div class="title">Music Only For You</div>
+            <br>
+            <div class="container">
+                <div class="arrow left">&#9664;</div>
+                <div class="boxes">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                    <div class="box">4</div>
+                    <div class="box">5</div>
+                    <div class="box">6</div>
+                </div>
+                <div class="arrow right">&#9654;</div>
             </div>
-            <div class="arrow right">&#9654;</div>
-        </div>
-    
-        <div class="container1">
-            <h1>음악 순위</h1>
-            <div class="menu">
-                <button>실시간 TOP 100</button>
-                <button>장르별</button>
-                <button>최신음악</button>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>순위</th>
-                        <th>곡 정보</th>
-                        <th>담기</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- 데이터가 들어갈 부분 -->
-                </tbody>
-            </table>
-        </div>
 
-    </section>
+            <div class="container1">
+                <h1>음악 순위</h1>
+                <div class="menu">
+                    <button>실시간 TOP 100</button>
+                    <button>장르별</button>
+                    <button>최신음악</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>순위</th>
+                            <th>곡 정보</th>
+                            <th>담기</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 데이터가 들어갈 부분 -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
         <section class="test2">
             <div>
-                <div class="sign">
+                <div class="sign" th:if="${user == null}">
                     <form th:action="@{/login}" method="post">
                         <div class="IP">
                             <br> &nbsp;
@@ -73,106 +72,114 @@
                             <input type="button" id="find-pw-btn" value="비밀번호 찾기"> <!-- 비밀번호 찾기 버튼 -->
                         </div>
                     </form>
+                </div>
+
+                <!-- 로그인한 사용자 정보 표시 -->
+                <div class="user-info" th:if="${user != null}">
+                    <p>안녕하세요, <span th:text="${user.name}">사용자 이름</span>님!</p>
+                    <p>아이디: <span th:text="${user.id}">사용자 ID</span></p>
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" value="로그아웃">
+                    </form>
+                </div>
+            </div>
+
+            <div class="playlist">
+                <div class="box1">
+                    <div class="box2">
+                        <img src="앨범.jpg" alt="앨범사진" width="250px" height="200px">
+                    </div>
                     
-                    <!-- 로그인 메시지 표시 -->
-                    <div th:if="${message != null}">
-                        <p style="color:red;" th:text="${message}"></p>
+                    <div class="plbtn1">
+                        <input type="button" value="이전">
+                        <input type="button" value="다음">
                     </div>
                 </div>
             </div>
 
-                <div class="playlist">
-                    <div class="box1">
-                        <div class="box2">
-                            <img src="앨범.jpg" alt="앨범사진" width="250px" height="200px">
-                        </div>
-                        
-                        <div class="plbtn1">
-                            <input type="button" value="이전">
-                            <input type="button" value="다음">
-                        </div>
-                    </div>
+            <div class="myplaylist" th:if="${user != null}">
+                <div class="mypl1">
+                    나의 PlayList 
                 </div>
-
-                <div class = "myplaylist">
-                    <div class = "mypl1">
-                        나의 PlayList 
-                    </div>
-                    <div class="myplli1">
-                    </div>
+                <div class="myplli1">
+                    <!-- 사용자 플레이리스트 내용 -->
                 </div>
             </div>
         </section>
 
-    <!-- 모달 창 (회원가입 폼) -->
-    <div id="signup-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>회원가입</h2>
-            <form>
-                <label for="new_user_name">이름:</label><br>
-                <input type="text" id="new_user_name" name="new_user_name"><br><br>
-                <label for="new_user_dob">생년월일:</label><br>
-                <input type="date" id="new_user_dob" name="new_user_dob"><br><br>
-                <label for="new_user_id">아이디:</label><br>
-                <input type="text" id="new_user_id" name="new_user_id"><br><br>
-                <label for="new_user_pw">비밀번호:</label><br>
-                <input type="password" id="new_user_pw" name="new_user_pw"><br><br>
-                <input type="submit" value="회원가입">
-            </form>
+        <!-- 모달 창 (회원가입 폼) -->
+        <div id="signup-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>회원가입</h2>
+                <form th:action="@{/signup}" method="post">
+                    <label for="new_user_name">이름:</label><br>
+                    <input type="text" id="new_user_name" name="new_user_name" required><br><br>
+                    <label for="new_user_dob">생년월일:</label><br>
+                    <input type="date" id="new_user_dob" name="new_user_dob" required><br><br>
+                    <label for="new_user_id">아이디:</label><br>
+                    <input type="text" id="new_user_id" name="new_user_id" required><br><br>
+                    <label for="new_user_pw">비밀번호:</label><br>
+                    <input type="password" id="new_user_pw" name="new_user_pw" required><br><br>
+                    <input type="submit" value="회원가입">
+                </form>
+            </div>
         </div>
-    </div>
 
-    <!-- 모달 창 (아이디 찾기 폼) -->
-    <div id="find-id-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="find-id-close">&times;</span>
-            <h2>아이디 찾기</h2>
-            <form>
-                <label for="find_user_name">이름:</label><br>
-                <input type="text" id="find_user_name" name="find_user_name"><br><br>
-                <label for="find_user_dob">생년월일:</label><br>
-                <input type="date" id="find_user_dob" name="find_user_dob"><br><br>
-                <input type="submit" value="아이디 찾기">
-            </form>
+        <!-- 아이디 찾기 폼 -->
+        <div id="find-id-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="find-id-close">&times;</span>
+                <h2>아이디 찾기</h2>
+                <form th:action="@{/find-id}" method="post"> <!-- action 수정 -->
+                    <label for="find_user_name">이름:</label><br>
+                    <input type="text" id="find_user_name" name="find_user_name" required><br><br>
+                    <label for="find_user_dob">생년월일:</label><br>
+                    <input type="date" id="find_user_dob" name="find_user_dob" required><br><br>
+                    <input type="submit" value="아이디 찾기">
+                </form>
+            </div>
         </div>
-    </div>
-    
-    <!-- 모달 창 (비밀번호 찾기 폼) -->
-    <div id="find-pw-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="find-pw-close">&times;</span>
-            <h2>비밀번호 찾기</h2>
-            <form>
-                <label for="new_user_id">아이디:</label><br>
-                <input type="text" id="new_user_id" name="new_user_id"><br><br>
-                <label for="find_user_name">이름:</label><br>
-                <input type="text" id="find_user_name" name="find_user_name"><br><br>
-                <label for="find_user_dob">생년월일:</label><br>
-                <input type="date" id="find_user_dob" name="find_user_dob"><br><br>
-                <input type="submit" value="비밀번호 찾기">
-            </form>
-        </div>
-    </div>
 
+        <!-- 비밀번호 찾기 폼 -->
+        <div id="find-pw-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="find-pw-close">&times;</span>
+                <h2>비밀번호 찾기</h2>
+                <form th:action="@{/find-password}" method="post"> <!-- action 수정 -->
+                    <label for="new_user_id">아이디:</label><br>
+                    <input type="text" id="new_user_id" name="new_user_id" required><br><br>
+                    <label for="find_user_name">이름:</label><br>
+                    <input type="text" id="find_user_name" name="find_user_name" required><br><br>
+                    <label for="find_user_dob">생년월일:</label><br>
+                    <input type="date" id="find_user_dob" name="find_user_dob" required><br><br>
+                    <input type="submit" value="비밀번호 찾기">
+                </form>
+            </div>
+        </div>
     </main>
+
+    <!-- 로그인 성공 및 실패 메시지 표시 -->
+    <script th:inline="javascript" th:if="${message != null}">
+        /*<![CDATA[*/
+        alert(/*[[${message}]]*/);
+        /*]]>*/
+    </script>
+
     <script>
         // 회원가입 모달을 제어하는 자바스크립트
         var modal = document.getElementById("signup-modal");
         var btn = document.getElementById("signup-btn");
         var span = document.getElementsByClassName("close")[0];
 
-        // 버튼 클릭 시 모달 창을 표시
         btn.onclick = function() {
             modal.style.display = "flex";
         }
 
-        // X 버튼 클릭 시 모달 창 닫기
         span.onclick = function() {
             modal.style.display = "none";
         }
 
-        // 모달 외부 클릭 시 모달 창 닫기
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
@@ -192,9 +199,7 @@
             findIdModal.style.display = "none";
         }
 
-
-
-         // 비밀번호 찾기 모달을 제어하는 자바스크립트
+        // 비밀번호 찾기 모달을 제어하는 자바스크립트
         var findPwModal = document.getElementById("find-pw-modal");
         var findPwBtn = document.getElementById("find-pw-btn");
         var findPwClose = document.getElementById("find-pw-close");
@@ -206,7 +211,6 @@
         findPwClose.onclick = function() {
             findPwModal.style.display = "none";
         }
-
     </script>
 </body>
 </html>
