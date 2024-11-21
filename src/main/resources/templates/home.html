@@ -162,19 +162,27 @@
     </main>
 
 <!-- 로그인 성공 및 실패 메시지 표시 -->
-<script th:inline="javascript" th:if="${message != null}">
+<script th:inline="javascript">
     /*<![CDATA[*/
-    alert(/*[[${message}]]*/); // 메시지 출력
-    /*]]>*/
-    
-    // 로그인 성공 시 페이지 유지하고, 홈 페이지로 리다이렉트되지 않도록 하기 위한 코드
-    if ([[${user}]] != null) {
+    // 메시지가 존재하면 alert 띄우기
+    var message = /*[[${message}]]*/ null;
+    if (message !== null) {
+        alert(message);
+    }
+
+    // 로그인한 사용자 확인 후, 홈으로 리다이렉트하지 않도록 방지
+    var user = /*[[${user}]]*/ null;  // 사용자 객체가 null이면 null로 처리
+    if (user !== null) {
         // 로그인 성공 시, 이미 사용자 정보가 표시되므로 추가 코드가 필요 없습니다.
     } else {
         // 로그인 실패 시 홈으로 리다이렉트
-        window.location.href = "/";  // 확인 버튼을 누르면 홈으로 리다이렉트
+        if (window.location.pathname !== "/") {  // 이미 홈 페이지에 있지 않다면
+            window.location.href = "/";  // 확인 버튼을 누르면 홈으로 리다이렉트
+        }
     }
+    /*]]>*/
 </script>
+
 
     
 
