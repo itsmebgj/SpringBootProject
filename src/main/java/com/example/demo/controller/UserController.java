@@ -26,16 +26,19 @@ public class UserController {
     @PostMapping("/login")
     public String login(@RequestParam String id, @RequestParam String password, Model model, HttpSession session) {
         boolean isValidUser = userService.validateUser(id, password);
-
+    
         if (isValidUser) {
             User user = userService.findById(id); // UserService에 findById 메서드 추가 필요
             session.setAttribute("user", user);
             model.addAttribute("message", "로그인에 성공하였습니다.");
+            model.addAttribute("user", user); // 로그인 성공 시 user 객체도 전달
         } else {
             model.addAttribute("message", "아이디 또는 비밀번호가 잘못되었습니다.");
         }
-        return "home"; // 로그인 결과를 표시할 홈 페이지로 이동
+        return "home"; // 현재 페이지(home)로 리턴
     }
+    
+    
 
     @PostMapping("/signup")
     public String signup(@RequestParam String new_user_name, 

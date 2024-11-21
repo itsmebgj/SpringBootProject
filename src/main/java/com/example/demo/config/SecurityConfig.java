@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 public class SecurityConfig {
@@ -25,13 +26,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests(authz -> authz
+            .authorizeRequests(authz -> authz
                 .requestMatchers("/signup").permitAll() // 회원가입은 누구나 접근 가능
                 .anyRequest().permitAll() // 모든 요청 허용
             )
             .logout(logout -> logout
                 .permitAll()
-            );
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST")) // 로그아웃을 POST 방식으로 처리
+                .logoutSuccessUrl("/") // 로그아웃 후 리다이렉트할 URL
+            )
+            .csrf().disable(); // CSRF를 비활성화할 필요가 있으면 설정 (로그아웃을 POST 방식으로 설정할 때 필요)
 
         return http.build();
     }

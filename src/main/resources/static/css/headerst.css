@@ -21,7 +21,7 @@ body {
 }
 
 .test2 {
-    width: 40%; /* 좌측 섹션의 너비 설정 */
+    width: 47%; /* 좌측 섹션의 너비 설정 */
     background-color: #f0f0f0; /* 섹션 배경색 설정 */
     padding: 20px; /* 내부 여백 설정 */
     border-radius: 10px; /* 모서리 둥글게 */
@@ -90,6 +90,8 @@ body {
     background-color: gray;
     width: 350px;
     height: 280px;
+    margin: 50px auto;
+    padding: 20px;
     margin-bottom: 30px; /* 로그인 섹션과 다른 요소 간의 여백 */
     border-radius: 10px; /* 모서리 둥글게 */
 }
@@ -119,6 +121,8 @@ body {
     background-color: gray;
     width: 350px;
     height: 350px;
+    margin: 50px auto;
+    padding: 20px;
     margin-top: 30px;
     position: relative;
     margin-bottom: 30px; /* 로그인 섹션과 다른 요소 간의 여백 */
@@ -153,6 +157,8 @@ body {
     width: 350px;
     height: 450px;
     margin-top: 30px;
+    margin: 50px auto;
+    padding: 20px;
     position: relative;
     border-radius: 10px; /* 모서리 둥글게 */
 }
@@ -184,6 +190,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+
 
 h1 {
     text-align: center;
@@ -229,3 +236,14 @@ tbody tr:hover {
     background-color: #f9f9f9;
 }
 
+.sign2 {
+    background-color: gray;
+    width: 350px;
+    height: 280px;
+    margin-bottom: 30px; /* 로그인 섹션과 다른 요소 간의 여백 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    display: flex;                /* Flexbox 사용 */
+    justify-content: center;      /* 수평 중앙 정렬 */
+    align-items: center;          /* 수직 중앙 정렬 */
+    text-align: center;           /* 내부 텍스트도 중앙 정렬 */
+}
