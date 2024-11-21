@@ -75,6 +75,7 @@
                 </div>
 
                 <!-- 로그인한 사용자 정보 표시 -->
+                 <div class="sign2">
                 <div class="user-info" th:if="${user != null}">
                     <p>안녕하세요, <span th:text="${user.name}">사용자 이름</span>님!</p>
                     <p>아이디: <span th:text="${user.id}">사용자 ID</span></p>
@@ -82,6 +83,7 @@
                         <input type="submit" value="로그아웃">
                     </form>
                 </div>
+            </div>
             </div>
 
             <div class="playlist">
@@ -159,12 +161,22 @@
         </div>
     </main>
 
-    <!-- 로그인 성공 및 실패 메시지 표시 -->
-    <script th:inline="javascript" th:if="${message != null}">
-        /*<![CDATA[*/
-        alert(/*[[${message}]]*/);
-        /*]]>*/
-    </script>
+<!-- 로그인 성공 및 실패 메시지 표시 -->
+<script th:inline="javascript" th:if="${message != null}">
+    /*<![CDATA[*/
+    alert(/*[[${message}]]*/); // 메시지 출력
+    /*]]>*/
+    
+    // 로그인 성공 시 페이지 유지하고, 홈 페이지로 리다이렉트되지 않도록 하기 위한 코드
+    if ([[${user}]] != null) {
+        // 로그인 성공 시, 이미 사용자 정보가 표시되므로 추가 코드가 필요 없습니다.
+    } else {
+        // 로그인 실패 시 홈으로 리다이렉트
+        window.location.href = "/";  // 확인 버튼을 누르면 홈으로 리다이렉트
+    }
+</script>
+
+    
 
     <script>
         // 회원가입 모달을 제어하는 자바스크립트
