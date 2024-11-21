@@ -42,7 +42,7 @@ public class SpotifyTokenManager {
         }
     }
 
-    private static String getAuthorizationUrl() {
+    public static String getAuthorizationUrl() {
         return "https://accounts.spotify.com/authorize?" +
                 "client_id=" + CLIENT_ID +
                 "&response_type=code" +
@@ -100,4 +100,26 @@ public class SpotifyTokenManager {
         String credentials = CLIENT_ID + ":" + CLIENT_SECRET;
         return Base64.getEncoder().encodeToString(credentials.getBytes());
     }
+
+    public static String getAccessToken(String authorizationCode) throws Exception {
+        String tokenUrl = "https://accounts.spotify.com/api/token";
+        HttpPost post = new HttpPost(tokenUrl);
+        post.setHeader("Authorization", "Basic " + getBase64Credentials());
+        post.setHeader("Content-Type", "application/x-www-form-urlencoded");
+    
+        String body = "grant_type=authorization_code" +
+                      "&code=" + authorizationCode +
+                      "&redirect_uri=" + REDIRECT_URI;
+        post.setEntity(new StringEntity(body));
+    
+        try (CloseableHttpClient client = HttpClients.createDefault();
+             CloseableHttpResponse response = client.execute(post)) {
+            String jsonResponse = EntityUtils.toString(response.getEntity());
+            JsonObject jsonObject = JsonParser.parseString(jsonResponse).getAsJsonObject();
+    
+            // Access Token 반환
+            return jsonObject.get("access_token").getAsString();
+        }
+    }
+
 }
