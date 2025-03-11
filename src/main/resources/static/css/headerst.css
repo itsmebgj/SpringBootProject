@@ -78,6 +78,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer; /* 클릭 가능한 UI 표시 */
+    pointer-events: auto; /* 클릭 가능하게 설정 */
 }
 
 .title {

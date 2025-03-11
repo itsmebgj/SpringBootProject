@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
-public class IncodingAPI {
+public class EncodingAPI {
     public static void main(String[] args) throws IOException {
         String clientId = "b03973dd37b54b81a9095638ae54fe98";
         String clientSecret = "72497d1f6d2940a88409342d0db102fe";

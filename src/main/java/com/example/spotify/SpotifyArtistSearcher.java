@@ -11,6 +11,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.util.Scanner;
+import java.util.List;
 
 public class SpotifyArtistSearcher {
 
@@ -30,7 +31,10 @@ public class SpotifyArtistSearcher {
             // 3. Authorization Code로 Access Token 발급 받기
             String accessToken = SpotifyTokenManager.getAccessToken(authorizationCode);
 
-            // 4. 동적으로 토큰을 받은 후 아티스트 검색
+            // 4. MySQL에서 아티스트 목록 가져오기
+            List<String> artistsToSearch = ArtistDatabase.getArtistsFromDatabase(); // 데이터베이스에서 아티스트 이름 가져오기
+            
+            /* 4. 동적으로 토큰을 받은 후 아티스트 검색
             String[] artistsToSearch = 
             {"Jimin", "aespa", "Jung Kook", "DAY6", "Bruno Mars", "NewJeans", "G-DRAGON", "BTS", "LE SSERAFIM", "BIGBANG", "ROSÉ", "PLAVE", "V", "Taylor Swift", 
             "ILLIT", "TOMORROW X TOGETHER", "LEE SEUNG YOON", "BABYMONSTER", "Kanye West", "Justin Bieber", "SEVENTEEN", "IU", "The Weeknd", "KISS OF LIFE", "Jin", 
@@ -50,6 +54,8 @@ public class SpotifyArtistSearcher {
             "Olivia Rodrigo", "21 Savage", "Heo Hoy Kyung", "Sam Smith", "LANY", "CODE KUNST", "Park Hyo Shin", "JVKE", "PSY", "Lim Changjung", "Lana Del Rey", 
             "MAKTUB", "Kid Wine", "MeloMance", "Primary", "BTOB", "N.Flying", "Chappell Roan", "j-hope", "HANRORO", "DAVICHI", "Creepy Nuts", "Punch", "DPR LIVE", "SPYAIR"}; // 검색할 아티스트 목록
             //https://charts.spotify.com/charts/view/artist-kr-weekly/latest
+            */
+
             for (String artistName : artistsToSearch) {
                 searchArtist(accessToken, artistName);
             }
